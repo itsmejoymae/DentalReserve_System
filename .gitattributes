@@ -1,0 +1,4 @@
+*.php linguist-language=PHP
+*.inc linguist-language=PHP
+/vendor/* linguist-vendored
+/node_modules/* linguist-vendored
