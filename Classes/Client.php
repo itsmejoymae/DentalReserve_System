@@ -42,13 +42,13 @@ class Users extends Dbh
                 $_SESSION['id'] = $row['id'];
                 $_SESSION['username'] = $row['username'];
 
-                $redirect = ($_SESSION['id'] === 35) ? '../public/admin/home.php' : '../public/client/home.php';
+                $redirect = ($_SESSION['id'] === 1) ? '../public/admin/home.php' : '../public/client/home.php';
                 return $redirect;
             } else {
-                return 9; // wrong password
+                return 9;
             }
         } else {
-            return 8; // user not found
+            return 8;
         }
     }
 }

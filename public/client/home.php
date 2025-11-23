@@ -1,5 +1,4 @@
-<?php include('../includes/header.php') ?>
-
+<?php include('../../includes/header.php'); ?>
 
 <section class="pt-4 pb-10 bg-[#E6F5FF]">
     <div class="max-w-6xl mx-auto px-4">
@@ -8,23 +7,18 @@
 
 
             <div class="flex items-center space-x-3 mb-4 md:mb-0">
-                <img src="../assets/images/logo.jpeg" alt="DentalCare Logo" class="w-12 h-12 rounded-full object-cover border-2 border-sky-400" />
+                <img src="../../assets/images/logo.jpeg" alt="DentalCare Logo" class="w-12 h-12 rounded-full object-cover border-2 border-sky-400" />
                 <span class="text-sky-600 font-bold text-lg select-none">DentalCare</span>
             </div>
 
 
             <div class="flex flex-col md:flex-row items-center md:space-x-4 space-y-2 md:space-y-0">
                 <div class="flex space-x-2 md:space-x-4">
-                    <a href="#" class="btn btn-sm btn-ghost bg-sky-200 text-sky-600 normal-case"
-                        onclick="document.getElementById('my_modal_1').showModal()">Home</a>
-                    <a href="#" class="btn btn-sm btn-ghost normal-case text-gray-600 hover:bg-gray-100"
-                        onclick="document.getElementById('my_modal_1').showModal()">Appointments</a>
-                    <a href="#" class="btn btn-sm btn-ghost normal-case text-gray-600 hover:bg-gray-100"
-                        onclick="document.getElementById('my_modal_1').showModal()">Patients</a>
+                    <a href="#" class="btn btn-sm btn-ghost bg-sky-200 text-sky-600 normal-case">Home</a>
+                    <a href="#" class="btn btn-sm btn-ghost normal-case text-gray-600 hover:bg-gray-100">Appointments</a>
                 </div>
 
-                <button class="btn btn-sm btn-primary normal-case flex items-center space-x-2 mt-2 md:mt-0"
-                    onclick="document.getElementById('my_modal_1').showModal()">
+                <button class="btn btn-sm btn-primary normal-case flex items-center space-x-2 mt-2 md:mt-0">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2v-7H3v7a2 2 0 002 2z" />
                     </svg>
@@ -171,4 +165,4 @@
 </dialog>
 
 
-<?php include('../includes/footer.php') ?>
+<?php include('../../includes/footer.php'); ?>
