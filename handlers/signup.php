@@ -6,7 +6,6 @@ if (isset($_POST['signup'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    //Validations
 
     if ($password == '' && $email == '') {
         $response = array(

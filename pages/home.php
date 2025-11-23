@@ -1,204 +1,162 @@
 <?php include('../includes/header.php') ?>
 
-    <dialog id="my_modal_1" class="modal">
-        <div class="modal-box">
-            <h3 class="text-lg font-bold">Sign up!</h3>
-            <div class="modal-action">
-                <form method="dialog">
-                    <input type="text" placeholder="Your Email" id="email" class="input input-ghost" />
-                    <input type="password" placeholder="Your password" id="password" class="input input-ghost" /><br>
-                    <a href="">Already has an account?</a>
-                    <br><br>
-                    <button class="btn --btn-signup">Signup</button>
-                    <button class="btn">Close</button>
-                </form>
-            </div>
-        </div>
-    </dialog>
 
-    <div class="navbar bg-base-100 shadow-sm">
-        <div class="navbar-start">
-            <div class="dropdown">
-                <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+<section class="pt-4 pb-10 bg-[#E6F5FF]">
+    <div class="max-w-6xl mx-auto px-4">
+
+        <div class="flex flex-col md:flex-row items-center md:justify-between p-4 bg-white rounded-lg shadow-md max-w-3xl mx-auto mt-6">
+
+
+            <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                <img src="../assets/images/logo.jpeg" alt="DentalCare Logo" class="w-12 h-12 rounded-full object-cover border-2 border-sky-400" />
+                <span class="text-sky-600 font-bold text-lg select-none">DentalCare</span>
+            </div>
+
+
+            <div class="flex flex-col md:flex-row items-center md:space-x-4 space-y-2 md:space-y-0">
+                <div class="flex space-x-2 md:space-x-4">
+                    <a href="#" class="btn btn-sm btn-ghost bg-sky-200 text-sky-600 normal-case"
+                        onclick="document.getElementById('my_modal_1').showModal()">Home</a>
+                    <a href="#" class="btn btn-sm btn-ghost normal-case text-gray-600 hover:bg-gray-100"
+                        onclick="document.getElementById('my_modal_1').showModal()">Appointments</a>
+                    <a href="#" class="btn btn-sm btn-ghost normal-case text-gray-600 hover:bg-gray-100"
+                        onclick="document.getElementById('my_modal_1').showModal()">Patients</a>
+                </div>
+
+                <button class="btn btn-sm btn-primary normal-case flex items-center space-x-2 mt-2 md:mt-0"
+                    onclick="document.getElementById('my_modal_1').showModal()">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2v-7H3v7a2 2 0 002 2z" />
                     </svg>
-                </div>
-                <ul
-                    tabindex="-1"
-                    class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                    <li><a>Reviews</a></li>
-                    <li>
-                        <a>Parent</a>
-                        <ul class="p-2">
-                            <li><a>Submenu 1</a></li>
-                            <li><a>Submenu 2</a></li>
-                        </ul>
-                    </li>
-                    <li><a>Item 3</a></li>
-                </ul>
+                    <span>Book Appointment</span>
+                </button>
             </div>
-            <a class="btn btn-ghost text-xl">Reservation System for Bolinao Beach Resort</a>
         </div>
-        <div class="navbar-center hidden lg:flex">
-            <ul class="menu menu-horizontal px-1">
-                <li><a>Reviews</a></li>
-                <li><a>Visits</a></li>
-                <li>
-                    <details>
-                        <summary>Menu</summary>
-                        <ul class="p-2">
-                            <li><a>Submenu 1</a></li>
-                            <li><a>Submenu 2</a></li>
-                        </ul>
-                    </details>
-                </li>
-            </ul>
-        </div>
-        <div class="navbar-end">
-            <a class="btn" onclick="my_modal_1.showModal()">Sign up</a>
-        </div>
+
+    </div>
+    <div class="text-center mt-10">
+        <h1 class="text-4xl font-bold text-gray-800 mt-6"> Your Smile, Our <span class="text-sky-600">Priority</span> </h1>
+        <p class="text-gray-600 mt-2 max-w-md mx-auto"> Professional dental care with state-of-the-art facilities and experienced practitioners. </p>
+    </div>
     </div>
 
-    <div class="carousel w-full">
-        <div id="item1" class="carousel-item w-full --btn-submit">
-            <img
-                src="https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.webp"
-                class="w-full" />
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-10">
+        <div class="stat bg-base-100 shadow rounded-box">
+            <div class="stat-value text-3xl text-sky-600">0</div>
+            <div class="stat-title">Total Patients</div>
         </div>
-        <div id="item2" class="carousel-item w-full">
-            <img
-                src="https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.webp"
-                class="w-full" />
+
+        <div class="stat bg-base-100 shadow rounded-box">
+            <div class="stat-value text-3xl text-sky-600">0</div>
+            <div class="stat-title">Scheduled</div>
         </div>
-        <div id="item3" class="carousel-item w-full">
-            <img
-                src="https://img.daisyui.com/images/stock/photo-1414694762283-acccc27bca85.webp"
-                class="w-full" />
+
+        <div class="stat bg-base-100 shadow rounded-box">
+            <div class="stat-value text-3xl text-sky-600">0</div>
+            <div class="stat-title">Completed</div>
         </div>
-        <div id="item4" class="carousel-item w-full">
-            <img
-                src="https://img.daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.webp"
-                class="w-full" />
+
+        <div class="stat bg-base-100 shadow rounded-box">
+            <div class="stat-value text-3xl text-sky-600">0</div>
+            <div class="stat-title">Cancelled</div>
         </div>
     </div>
-    <div class="flex w-full justify-center gap-2 py-2">
-        <a href="#item1" class="btn btn-xs">1</a>
-        <a href="#item2" class="btn btn-xs">2</a>
-        <a href="#item3" class="btn btn-xs">3</a>
-        <a href="#item4" class="btn btn-xs">4</a>
     </div>
+</section>
 
-    <center><a href="" style="font-size: 3rem">Rooms Available</a></center>
 
-    <div style="display: flex; gap: 20px;">
-        <div class="card bg-base-100 w-96 shadow-sm">
-            <figure>
-                <img
-                    src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                    alt="Shoes" />
-            </figure>
-            <div class="card-body">
-                <h2 class="card-title">Card Title</h2>
-                <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-                <div class="card-actions justify-end">
-                    <button class="btn btn-primary">Buy Now</button>
+<section class="py-10 bg-[#E6F5FF]">
+    <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-6">Our Services</h2>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+
+            <div class="card bg-base-100 shadow-md p-5">
+                <div class="flex items-center gap-3">
+                    <div class="bg-sky-200 p-3 rounded-lg">
+                        <img src="/mnt/data/44ce4fb9-34b3-43d3-a31b-1b3a9ca61022.png" class="w-8" />
+                    </div>
+                    <h3 class="text-lg font-semibold">General Checkup</h3>
                 </div>
+                <p class="text-gray-600 mt-2">
+                    Comprehensive dental examination and oral health assessment.
+                </p>
             </div>
-        </div>
-        <div class="card bg-base-100 w-96 shadow-sm">
-            <figure>
-                <img
-                    src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                    alt="Shoes" />
-            </figure>
-            <div class="card-body">
-                <h2 class="card-title">Card Title</h2>
-                <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-                <div class="card-actions justify-end">
-                    <button class="btn btn-primary">Buy Now</button>
+
+            <div class="card bg-base-100 shadow-md p-5">
+                <div class="flex items-center gap-3">
+                    <div class="bg-sky-200 p-3 rounded-lg">
+                        <img src="/mnt/data/44ce4fb9-34b3-43d3-a31b-1b3a9ca61022.png" class="w-8" />
+                    </div>
+                    <h3 class="text-lg font-semibold">Teeth Cleaning</h3>
                 </div>
+                <p class="text-gray-600 mt-2">
+                    Professional cleaning to maintain optimal oral hygiene.
+                </p>
             </div>
-        </div>
-        <div class="card bg-base-100 w-96 shadow-sm">
-            <figure>
-                <img
-                    src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                    alt="Shoes" />
-            </figure>
-            <div class="card-body">
-                <h2 class="card-title">Card Title</h2>
-                <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-                <div class="card-actions justify-end">
-                    <button class="btn btn-primary">Buy Now</button>
+
+            <div class="card bg-base-100 shadow-md p-5">
+                <div class="flex items-center gap-3">
+                    <div class="bg-sky-200 p-3 rounded-lg">
+                        <img src="/mnt/data/44ce4fb9-34c4f22f9ad2c5ff2e26d971e207c62-01.jpg" class="w-8" />
+                    </div>
+                    <h3 class="text-lg font-semibold">Root Canal</h3>
                 </div>
+                <p class="text-gray-500 mt-2">
+                    Advanced endodontic treatment for infected teeth.
+                </p>
             </div>
-        </div>
-        <div class="card bg-base-100 w-96 shadow-sm">
-            <figure>
-                <img
-                    src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                    alt="Shoes" />
-            </figure>
-            <div class="card-body">
-                <h2 class="card-title">Card Title</h2>
-                <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-                <div class="card-actions justify-end">
-                    <button class="btn btn-primary">Buy Now</button>
-                </div>
-            </div>
-        </div>
-        <div class="card bg-base-100 w-96 shadow-sm">
-            <figure>
-                <img
-                    src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                    alt="Shoes" />
-            </figure>
-            <div class="card-body">
-                <h2 class="card-title">Card Title</h2>
-                <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-                <div class="card-actions justify-end">
-                    <button class="btn btn-primary">Buy Now</button>
-                </div>
-            </div>
-        </div>
-        <div class="card bg-base-100 w-96 shadow-sm">
-            <figure>
-                <img
-                    src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                    alt="Shoes" />
-            </figure>
-            <div class="card-body">
-                <h2 class="card-title">Card Title</h2>
-                <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-                <div class="card-actions justify-end">
-                    <button class="btn btn-primary">Buy Now</button>
-                </div>
-            </div>
+
         </div>
     </div>
+</section>
 
-    <footer class="footer sm:footer-horizontal bg-neutral text-neutral-content p-10">
-        <nav>
-            <h6 class="footer-title">Services</h6>
-            <a class="link link-hover">Branding</a>
-            <a class="link link-hover">Design</a>
-            <a class="link link-hover">Marketing</a>
-            <a class="link link-hover">Advertisement</a>
-        </nav>
-        <nav>
-            <h6 class="footer-title">Company</h6>
-            <a class="link link-hover">About us</a>
-            <a class="link link-hover">Contact</a>
-            <a class="link link-hover">Jobs</a>
-            <a class="link link-hover">Press kit</a>
-        </nav>
-        <nav>
-            <h6 class="footer-title">Legal</h6>
-            <a class="link link-hover">Terms of use</a>
-            <a class="link link-hover">Privacy policy</a>
-            <a class="link link-hover">Cookie policy</a>
-        </nav>
-    </footer>
+<dialog id="my_modal_1" class="modal">
+    <div class="modal-box">
 
-    <?php include('../includes/footer.php') ?>
+
+        <div id="signin_section">
+            <h3 class="font-bold text-xl mb-3">Sign In</h3>
+
+            <form id="signinForm" class="space-y-3">
+                <input type="text" placeholder="Email" id="login_email" class="input input-bordered w-full" required />
+                <input type="password" placeholder="Password" id="login_password" class="input input-bordered w-full" required />
+
+                <p class="text-sm">
+                    Don't have an account?
+                    <span class="text-sky-600 cursor-pointer" onclick="swapForm('signup')">Create one</span>
+                </p>
+
+                <div class="modal-action">
+                    <button type="submit" class="btn bg-sky-600 text-white">Sign In</button>
+                    <button type="button" class="btn" onclick="my_modal_1.close()">Close</button>
+                </div>
+            </form>
+        </div>
+
+
+        <div id="signup_section" class="hidden">
+            <h3 class="font-bold text-xl mb-3">Create Account</h3>
+
+            <form id="signupForm" class="space-y-3">
+                <input type="text" placeholder="Email" id="email" class="input input-bordered w-full" required />
+                <input type="password" placeholder="Password" id="password" class="input input-bordered w-full" required />
+
+                <p class="text-sm">
+                    Already have an account?
+                    <span class="text-sky-600 cursor-pointer" onclick="swapForm('signin')">Sign in</span>
+                </p>
+
+                <div class="modal-action">
+                    <button type="submit" class="btn bg-sky-600 text-white">Sign Up</button>
+                    <button type="button" class="btn" onclick="my_modal_1.close()">Close</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</dialog>
+
+
+<?php include('../includes/footer.php') ?>

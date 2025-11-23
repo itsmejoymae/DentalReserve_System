@@ -2,19 +2,20 @@
 include('../Classes/Client.php');
 $clients = new Users();
 
-if (isset($_POST['signup'])) {
+
+if (isset($_POST['signin'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    //Validations
 
     if ($password == '' && $email == '') {
         $response = array(
-            'error' => "Email and Password is empty!",
+            'error' => "Email and Password is empty!"
         );
     } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $response = array(
             'error' => "Email is not valid!",
+
         );
     } else if ($email == '') {
         $response = array(
@@ -30,20 +31,19 @@ if (isset($_POST['signup'])) {
         );
     } else {
 
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        $signin = $clients->signin($email, $password);
 
-        $insert = $clients->signup($email, $hashed_password);
-        if ($insert === 1) {
+        if ($signin === 9) {
             $response = array(
-                'success' => "Data has been inserted successfully!",
+                'error' => "Database error!",
             );
-        } else if($insert === 3) {
+        } else if ($signin === 8) {
             $response = array(
-                'error' => "Email already exist",
+                'error' => "user not found",
             );
-        }else {
+        } else {
             $response = array(
-                'error' => "Database error",
+                'redirect' => $signin
             );
         }
     }
@@ -51,5 +51,3 @@ if (isset($_POST['signup'])) {
     echo json_encode($response);
     exit;
 }
- 
-

@@ -5,7 +5,7 @@ class Dbh
     private $host = "localhost";
     private $user = "root";
     private $pwd = "";
-    private $dbName = "reservation_system";
+    private $dbName = "dental_reservation";
     protected $conn;
 
     public function connect()
@@ -19,4 +19,3 @@ class Dbh
         return $this->conn;
     }
 }
-?>
