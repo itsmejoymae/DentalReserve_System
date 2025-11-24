@@ -19,8 +19,6 @@
                         onclick="document.getElementById('my_modal_1').showModal()">Home</a>
                     <a href="#" class="btn btn-sm btn-ghost normal-case text-gray-600 hover:bg-gray-100"
                         onclick="document.getElementById('my_modal_1').showModal()">Appointments</a>
-                    <a href="#" class="btn btn-sm btn-ghost normal-case text-gray-600 hover:bg-gray-100"
-                        onclick="document.getElementById('my_modal_1').showModal()">Patients</a>
                 </div>
 
                 <button class="btn btn-sm btn-primary normal-case flex items-center space-x-2 mt-2 md:mt-0"
@@ -40,135 +38,110 @@
     </div>
     </div>
 
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-10">
-        <div class="stat bg-base-100 shadow rounded-box">
-            <div class="stat-value text-3xl text-sky-600">0</div>
-            <div class="stat-title">Total Patients</div>
-        </div>
+    <section class="py-10 bg-[#E6F5FF]">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-6">Our Services</h2>
 
-        <div class="stat bg-base-100 shadow rounded-box">
-            <div class="stat-value text-3xl text-sky-600">0</div>
-            <div class="stat-title">Scheduled</div>
-        </div>
-
-        <div class="stat bg-base-100 shadow rounded-box">
-            <div class="stat-value text-3xl text-sky-600">0</div>
-            <div class="stat-title">Completed</div>
-        </div>
-
-        <div class="stat bg-base-100 shadow rounded-box">
-            <div class="stat-value text-3xl text-sky-600">0</div>
-            <div class="stat-title">Cancelled</div>
-        </div>
-    </div>
-    </div>
-</section>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
 
-<section class="py-10 bg-[#E6F5FF]">
-    <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-3xl font-bold mb-6">Our Services</h2>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-
-            <div class="card bg-base-100 shadow-md p-5">
-                <div class="flex items-center gap-3">
-                    <div class="bg-sky-200 p-3 rounded-lg">
-                        <img src="/mnt/data/44ce4fb9-34b3-43d3-a31b-1b3a9ca61022.png" class="w-8" />
+                <div class="card bg-base-100 shadow-md p-5">
+                    <div class="flex items-center gap-3">
+                        <div class="bg-sky-200 p-3 rounded-lg">
+                            <img src="/mnt/data/44ce4fb9-34b3-43d3-a31b-1b3a9ca61022.png" class="w-8" />
+                        </div>
+                        <h3 class="text-lg font-semibold">General Checkup</h3>
                     </div>
-                    <h3 class="text-lg font-semibold">General Checkup</h3>
+                    <p class="text-gray-600 mt-2">
+                        Comprehensive dental examination and oral health assessment.
+                    </p>
                 </div>
-                <p class="text-gray-600 mt-2">
-                    Comprehensive dental examination and oral health assessment.
-                </p>
+
+                <div class="card bg-base-100 shadow-md p-5">
+                    <div class="flex items-center gap-3">
+                        <div class="bg-sky-200 p-3 rounded-lg">
+                            <img src="/mnt/data/44ce4fb9-34b3-43d3-a31b-1b3a9ca61022.png" class="w-8" />
+                        </div>
+                        <h3 class="text-lg font-semibold">Teeth Cleaning</h3>
+                    </div>
+                    <p class="text-gray-600 mt-2">
+                        Professional cleaning to maintain optimal oral hygiene.
+                    </p>
+                </div>
+
+                <div class="card bg-base-100 shadow-md p-5">
+                    <div class="flex items-center gap-3">
+                        <div class="bg-sky-200 p-3 rounded-lg">
+                            <img src="/mnt/data/44ce4fb9-34c4f22f9ad2c5ff2e26d971e207c62-01.jpg" class="w-8" />
+                        </div>
+                        <h3 class="text-lg font-semibold">Root Canal</h3>
+                    </div>
+                    <p class="text-gray-500 mt-2">
+                        Advanced endodontic treatment for infected teeth.
+                    </p>
+                </div>
+
+                <div class="card bg-base-100 shadow-md p-5">
+                    <div class="flex items-center gap-3">
+                        <div class="bg-sky-200 p-3 rounded-lg">
+                            <img src="/mnt/data/44ce4fb9-34c4f22f9ad2c5ff2e26d971e207c62-01.jpg" class="w-8" />
+                        </div>
+                        <h3 class="text-lg font-semibold">Brace Installment</h3>
+                    </div>
+                    <p class="text-gray-500 mt-2">
+                        Advanced endodontic treatment for teeth alignment.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <dialog id="my_modal_1" class="modal">
+        <div class="modal-box">
+
+
+            <div id="signin_section">
+                <h3 class="font-bold text-xl mb-3">Sign In</h3>
+
+                <form id="signinForm" class="space-y-3">
+                    <input type="text" placeholder="Email" id="login_email" class="input input-bordered w-full" required />
+                    <input type="password" placeholder="Password" id="login_password" class="input input-bordered w-full" required />
+
+                    <p class="text-sm">
+                        Don't have an account?
+                        <span class="text-sky-600 cursor-pointer" onclick="swapForm('signup')">Create one</span>
+                    </p>
+
+                    <div class="modal-action">
+                        <button type="submit" class="btn bg-sky-600 text-white">Sign In</button>
+                        <button type="button" class="btn" onclick="my_modal_1.close()">Close</button>
+                    </div>
+                </form>
             </div>
 
-            <div class="card bg-base-100 shadow-md p-5">
-                <div class="flex items-center gap-3">
-                    <div class="bg-sky-200 p-3 rounded-lg">
-                        <img src="/mnt/data/44ce4fb9-34b3-43d3-a31b-1b3a9ca61022.png" class="w-8" />
-                    </div>
-                    <h3 class="text-lg font-semibold">Teeth Cleaning</h3>
-                </div>
-                <p class="text-gray-600 mt-2">
-                    Professional cleaning to maintain optimal oral hygiene.
-                </p>
-            </div>
 
-            <div class="card bg-base-100 shadow-md p-5">
-                <div class="flex items-center gap-3">
-                    <div class="bg-sky-200 p-3 rounded-lg">
-                        <img src="/mnt/data/44ce4fb9-34c4f22f9ad2c5ff2e26d971e207c62-01.jpg" class="w-8" />
-                    </div>
-                    <h3 class="text-lg font-semibold">Root Canal</h3>
-                </div>
-                <p class="text-gray-500 mt-2">
-                    Advanced endodontic treatment for infected teeth.
-                </p>
-            </div>
+            <div id="signup_section" class="hidden">
+                <h3 class="font-bold text-xl mb-3">Create Account</h3>
 
-            <div class="card bg-base-100 shadow-md p-5">
-                <div class="flex items-center gap-3">
-                    <div class="bg-sky-200 p-3 rounded-lg">
-                        <img src="/mnt/data/44ce4fb9-34c4f22f9ad2c5ff2e26d971e207c62-01.jpg" class="w-8" />
+                <form id="signupForm" class="space-y-3">
+                    <input type="text" placeholder="Email" id="email" class="input input-bordered w-full" required />
+                    <input type="password" placeholder="Password" id="password" class="input input-bordered w-full" required />
+
+                    <p class="text-sm">
+                        Already have an account?
+                        <span class="text-sky-600 cursor-pointer" onclick="swapForm('signin')">Sign in</span>
+                    </p>
+
+                    <div class="modal-action">
+                        <button type="submit" class="btn bg-sky-600 text-white">Sign Up</button>
+                        <button type="button" class="btn" onclick="my_modal_1.close()">Close</button>
                     </div>
-                    <h3 class="text-lg font-semibold">Brace Installment</h3>
-                </div>
-                <p class="text-gray-500 mt-2">
-                    Advanced endodontic treatment for teeth alignment.
-                </p>
+                </form>
             </div>
 
         </div>
-    </div>
-</section>
-
-<dialog id="my_modal_1" class="modal">
-    <div class="modal-box">
+    </dialog>
 
 
-        <div id="signin_section">
-            <h3 class="font-bold text-xl mb-3">Sign In</h3>
-
-            <form id="signinForm" class="space-y-3">
-                <input type="text" placeholder="Email" id="login_email" class="input input-bordered w-full" required />
-                <input type="password" placeholder="Password" id="login_password" class="input input-bordered w-full" required />
-
-                <p class="text-sm">
-                    Don't have an account?
-                    <span class="text-sky-600 cursor-pointer" onclick="swapForm('signup')">Create one</span>
-                </p>
-
-                <div class="modal-action">
-                    <button type="submit" class="btn bg-sky-600 text-white">Sign In</button>
-                    <button type="button" class="btn" onclick="my_modal_1.close()">Close</button>
-                </div>
-            </form>
-        </div>
-
-
-        <div id="signup_section" class="hidden">
-            <h3 class="font-bold text-xl mb-3">Create Account</h3>
-
-            <form id="signupForm" class="space-y-3">
-                <input type="text" placeholder="Email" id="email" class="input input-bordered w-full" required />
-                <input type="password" placeholder="Password" id="password" class="input input-bordered w-full" required />
-
-                <p class="text-sm">
-                    Already have an account?
-                    <span class="text-sky-600 cursor-pointer" onclick="swapForm('signin')">Sign in</span>
-                </p>
-
-                <div class="modal-action">
-                    <button type="submit" class="btn bg-sky-600 text-white">Sign Up</button>
-                    <button type="button" class="btn" onclick="my_modal_1.close()">Close</button>
-                </div>
-            </form>
-        </div>
-
-    </div>
-</dialog>
-
-
-<?php include('../includes/footer.php') ?>
+    <?php include('../includes/footer.php') ?>

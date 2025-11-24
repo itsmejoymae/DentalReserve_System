@@ -16,6 +16,7 @@
                 <div class="flex space-x-2 md:space-x-4">
                     <a href="#" class="btn btn-sm btn-ghost bg-sky-200 text-sky-600 normal-case">Home</a>
                     <a href="#" class="btn btn-sm btn-ghost normal-case text-gray-600 hover:bg-gray-100">Appointments</a>
+
                 </div>
 
                 <button class="btn btn-sm btn-primary normal-case flex items-center space-x-2 mt-2 md:mt-0">
@@ -24,14 +25,35 @@
                     </svg>
                     <span>Book Appointment</span>
                 </button>
-            </div>
-        </div>
+                <div class="dropdown dropdown-end">
+                    <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+                        <div class="w-10 rounded-full">
+                            <img
+                                alt="Tailwind CSS Navbar component"
+                                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                        </div>
+                    </div>
+                    <ul
+                        tabindex="-1"
+                        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                        <li>
+                            <a class="justify-between">
+                                Profile
+                                <span class="badge">New</span>
+                            </a>
+                        </li>
+                        <li><a>Settings</a></li>
+                        <li><a>Logout</a></li>
+                    </ul>
 
-    </div>
-    <div class="text-center mt-10">
-        <h1 class="text-4xl font-bold text-gray-800 mt-6"> Your Smile, Our <span class="text-sky-600">Priority</span> </h1>
-        <p class="text-gray-600 mt-2 max-w-md mx-auto"> Professional dental care with state-of-the-art facilities and experienced practitioners. </p>
-    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="text-center mt-10">
+            <h1 class="text-4xl font-bold text-gray-800 mt-6"> Your Smile, Our <span class="text-sky-600">Priority</span> </h1>
+            <p class="text-gray-600 mt-2 max-w-md mx-auto"> Professional dental care with state-of-the-art facilities and experienced practitioners. </p>
+        </div>
     </div>
 
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-10">

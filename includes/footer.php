@@ -54,13 +54,11 @@
                 },
                 dataType: 'json',
                 success: function(response) {
-                    if (response.error) {
-                        alert(response.error);
+                    if (response.redirect) {
+                        window.location.href = response.redirect;
                     } else {
                         alert(response.success);
-                        if (response.redirect) {
-                            window.location.href = response.redirect;
-                        }
+
                     }
                 },
                 error: function(xhr) {
