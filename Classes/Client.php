@@ -66,4 +66,42 @@ class Users extends Dbh
             return 2;
         }
     }
+
+    public function getAppointmentCount($userId)
+    {
+        $stmt = $this->connect()->prepare("SELECT COUNT(*) as count FROM appointment WHERE user_id = ?");
+        $stmt->bind_param('i', $userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row['count'];
+    }
+
+    public function getProfile($userId)
+    {
+        $stmt = $this->connect()->prepare("SELECT * FROM patient WHERE user_id = ?");
+        $stmt->bind_param('i', $userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+
+    public function updateProfile($userId, $firstname, $lastname, $phone, $address)
+    {
+        $profile = $this->getProfile($userId);
+
+        if ($profile) {
+            $stmt = $this->connect()->prepare("UPDATE patient SET first_name = ?, last_name = ?, phone = ?, address = ? WHERE user_id = ?");
+            $stmt->bind_param('ssssi', $firstname, $lastname, $phone, $address, $userId);
+        } else {
+            $stmt = $this->connect()->prepare("INSERT INTO patient (user_id, first_name, last_name, phone, address) VALUES (?, ?, ?, ?, ?)");
+            $stmt->bind_param('issss', $userId, $firstname, $lastname, $phone, $address);
+        }
+
+        if ($stmt->execute()) {
+            return 1;
+        } else {
+            return 2;
+        }
+    }
 }

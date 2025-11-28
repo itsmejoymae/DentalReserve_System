@@ -1,14 +1,11 @@
 <?php include('header.php'); ?>
 
-
 <section class="pt-4 pb-10 bg-[#E6F5FF]">
     <div class="max-w-6xl mx-auto px-4">
         <div class="flex flex-col md:flex-row items-center md:justify-between p-4 bg-white rounded-lg shadow-md max-w-3xl mx-auto mt-6">
             <div class="flex items-center space-x-3 mb-4 md:mb-0">
                 <img src="../../assets/images/logo.jpeg" alt="DentalCare Logo" class="w-12 h-12 rounded-full object-cover border-2 border-sky-400" />
-                <span class="text-sky-600 font-bold text-lg select-none">DentalCare</span>
             </div>
-
 
             <div class="flex flex-col md:flex-row items-center md:space-x-4 space-y-2 md:space-y-0">
                 <div class="flex space-x-2 md:space-x-4">
@@ -38,18 +35,17 @@
                         tabindex="-1"
                         class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                         <li>
-                            <a class="justify-between">
+                            <a class="justify-between" onclick="document.getElementById('profile_modal').showModal()">
                                 Profile
-                                <span class="badge">New</span>
                             </a>
                         </li>
                         <li><a>Settings</a></li>
-                        <li><a>Logout</a></li>
+                        <li><a href="../../handlers/logout.php">Logout</a></li>
                     </ul>
                 </div>
             </div>
 
-
+            <!-- Appointment Modal -->
             <dialog id="my_modal_2" class="modal">
                 <div class="modal-box">
                     <h3 class="font-bold text-xl mb-3">Book Appointment</h3>
@@ -69,12 +65,10 @@
                         <button
                             type="submit"
                             class="btn btn-primary w-full"
-                            name="appointment"
-                            data-user-id="<?php echo htmlspecialchars($_SESSION['id']) ?>">
+                            name="appointment">
                             Submit
                         </button>
                     </form>
-
 
                     <div class="modal-action">
                         <button class="btn" onclick="my_modal_2.close()">Close</button>
@@ -82,31 +76,45 @@
                 </div>
             </dialog>
 
+            <!-- Profile Modal -->
+            <dialog id="profile_modal" class="modal">
+                <div class="modal-box">
+                    <h3 class="font-bold text-xl mb-3">Profile</h3>
+                    <?php $profile = $clients->getProfile($_SESSION['id']); ?>
+                    <form id="profile_form" class="space-y-3">
+                        <input type="text" name="firstname" placeholder="First Name" class="input input-bordered w-full" value="<?php echo $profile['first_name'] ?? ''; ?>" />
+                        <input type="text" name="lastname" placeholder="Last Name" class="input input-bordered w-full" value="<?php echo $profile['last_name'] ?? ''; ?>" />
+                        <input type="text" name="phone" placeholder="Phone Number" class="input input-bordered w-full" value="<?php echo $profile['phone'] ?? ''; ?>" />
+                        <textarea name="address" placeholder="Address" class="textarea textarea-bordered w-full"><?php echo $profile['address'] ?? ''; ?></textarea>
 
+                        <button type="submit" class="btn btn-primary w-full" name="update_profile">Update Profile</button>
+                    </form>
 
+                    <div class="modal-action">
+                        <button class="btn" onclick="profile_modal.close()">Close</button>
+                    </div>
+                </div>
+            </dialog>
         </div>
+
         <div class="text-center mt-10">
             <h1 class="text-4xl font-bold text-gray-800 mt-6"> Your Smile, Our <span class="text-sky-600">Priority</span> </h1>
             <p class="text-gray-600 mt-2 max-w-md mx-auto"> Professional dental care with state-of-the-art facilities and experienced practitioners. </p>
         </div>
-    </div>
 
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-10">
-        <div class="stat bg-base-100 shadow rounded-box">
-            <div class="stat-value text-3xl text-sky-600">0</div>
-            <div class="stat-title">Scheduled</div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-10">
+            <div class="stat bg-base-100 shadow rounded-box">
+                <div class="stat-value text-3xl text-sky-600"><?php echo $clients->getAppointmentCount($_SESSION['id']); ?></div>
+                <div class="stat-title">Scheduled</div>
+            </div>
         </div>
-    </div>
     </div>
 </section>
 
 <section class="py-10 bg-[#E6F5FF]">
     <div class="max-w-6xl mx-auto px-4">
         <h2 class="text-3xl font-bold mb-6">Our Services</h2>
-
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-
             <div class="card bg-base-100 shadow-md p-5">
                 <div class="flex items-center gap-3">
                     <div class="bg-sky-200 p-3 rounded-lg">
@@ -114,11 +122,8 @@
                     </div>
                     <h3 class="text-lg font-semibold">General Checkup</h3>
                 </div>
-                <p class="text-gray-600 mt-2">
-                    Comprehensive dental examination and oral health assessment.
-                </p>
+                <p class="text-gray-600 mt-2"> Comprehensive dental examination and oral health assessment. </p>
             </div>
-
             <div class="card bg-base-100 shadow-md p-5">
                 <div class="flex items-center gap-3">
                     <div class="bg-sky-200 p-3 rounded-lg">
@@ -126,11 +131,8 @@
                     </div>
                     <h3 class="text-lg font-semibold">Teeth Cleaning</h3>
                 </div>
-                <p class="text-gray-600 mt-2">
-                    Professional cleaning to maintain optimal oral hygiene.
-                </p>
+                <p class="text-gray-600 mt-2"> Professional cleaning to maintain optimal oral hygiene. </p>
             </div>
-
             <div class="card bg-base-100 shadow-md p-5">
                 <div class="flex items-center gap-3">
                     <div class="bg-sky-200 p-3 rounded-lg">
@@ -138,11 +140,8 @@
                     </div>
                     <h3 class="text-lg font-semibold">Root Canal</h3>
                 </div>
-                <p class="text-gray-500 mt-2">
-                    Advanced endodontic treatment for infected teeth.
-                </p>
+                <p class="text-gray-500 mt-2"> Advanced endodontic treatment for infected teeth. </p>
             </div>
-
             <div class="card bg-base-100 shadow-md p-5">
                 <div class="flex items-center gap-3">
                     <div class="bg-sky-200 p-3 rounded-lg">
@@ -150,11 +149,8 @@
                     </div>
                     <h3 class="text-lg font-semibold">Brace Installment</h3>
                 </div>
-                <p class="text-gray-500 mt-2">
-                    Advanced endodontic treatment for teeth alignment.
-                </p>
+                <p class="text-gray-500 mt-2"> Advanced endodontic treatment for teeth alignment. </p>
             </div>
-
         </div>
     </div>
 </section>
