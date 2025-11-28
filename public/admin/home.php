@@ -5,12 +5,10 @@
 
         <div class="flex flex-col md:flex-row items-center md:justify-between p-4 bg-white rounded-lg shadow-md max-w-3xl mx-auto mt-6">
 
-
             <div class="flex items-center space-x-3 mb-4 md:mb-0">
                 <img src="../../assets/images/logo.jpeg" alt="DentalCare Logo" class="w-12 h-12 rounded-full object-cover border-2 border-sky-400" />
                 <span class="text-sky-600 font-bold text-lg select-none">DentalCare</span>
             </div>
-
 
             <div class="flex flex-col md:flex-row items-center md:space-x-4 space-y-2 md:space-y-0">
                 <div class="flex space-x-2 md:space-x-4">
@@ -140,51 +138,6 @@
     </div>
 </section>
 
-<dialog id="my_modal_1" class="modal">
-    <div class="modal-box">
-
-
-        <div id="signin_section">
-            <h3 class="font-bold text-xl mb-3">Sign In</h3>
-
-            <form id="signinForm" class="space-y-3">
-                <input type="text" placeholder="Email" id="login_email" class="input input-bordered w-full" required />
-                <input type="password" placeholder="Password" id="login_password" class="input input-bordered w-full" required />
-
-                <p class="text-sm">
-                    Don't have an account?
-                    <span class="text-sky-600 cursor-pointer" onclick="swapForm('signup')">Create one</span>
-                </p>
-
-                <div class="modal-action">
-                    <button type="submit" class="btn bg-sky-600 text-white">Sign In</button>
-                    <button type="button" class="btn" onclick="my_modal_1.close()">Close</button>
-                </div>
-            </form>
-        </div>
-
-
-        <div id="signup_section" class="hidden">
-            <h3 class="font-bold text-xl mb-3">Create Account</h3>
-
-            <form id="signupForm" class="space-y-3">
-                <input type="text" placeholder="Email" id="email" class="input input-bordered w-full" required />
-                <input type="password" placeholder="Password" id="password" class="input input-bordered w-full" required />
-
-                <p class="text-sm">
-                    Already have an account?
-                    <span class="text-sky-600 cursor-pointer" onclick="swapForm('signin')">Sign in</span>
-                </p>
-
-                <div class="modal-action">
-                    <button type="submit" class="btn bg-sky-600 text-white">Sign Up</button>
-                    <button type="button" class="btn" onclick="my_modal_1.close()">Close</button>
-                </div>
-            </form>
-        </div>
-
-    </div>
-</dialog>
 
 
 <?php include('../../includes/footer.php'); ?>

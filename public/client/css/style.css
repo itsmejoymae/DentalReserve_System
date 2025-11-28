@@ -1,0 +1,29 @@
+.styled-select {
+  width: 100%;
+  padding: 10px 12px;
+  background-color: #2a2f3b;
+  color: white;
+  border: 2px solid #3b4252;
+  border-radius: 6px;
+  font-size: 16px;
+
+  /* remove default arrows */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='20' viewBox='0 0 20 20' width='20' xmlns='http://www.w3.org/2000/svg'><polygon points='0,0 20,0 10,12'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 14px;
+}
+
+.styled-select:focus {
+  outline: none;
+  border-color: #5f87ff;
+}
+
+.styled-select option {
+  background-color: #2a2f3b;
+  color: white;
+}

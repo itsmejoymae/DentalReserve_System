@@ -51,4 +51,19 @@ class Users extends Dbh
             return 8;
         }
     }
+
+    public function appointment($userId, $date, $time, $app_type)
+    {
+        $stmt = $this->connect()->prepare(
+            "INSERT INTO appointment (user_id, date, time, app_type) VALUES (?, ?, ?, ?)"
+        );
+
+        $stmt->bind_param("isss", $userId, $date, $time, $app_type);
+
+        if ($stmt->execute()) {
+            return 1;
+        } else {
+            return 2;
+        }
+    }
 }

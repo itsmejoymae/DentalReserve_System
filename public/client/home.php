@@ -1,11 +1,9 @@
-<?php include('../../includes/header.php'); ?>
+<?php include('header.php'); ?>
+
 
 <section class="pt-4 pb-10 bg-[#E6F5FF]">
     <div class="max-w-6xl mx-auto px-4">
-
         <div class="flex flex-col md:flex-row items-center md:justify-between p-4 bg-white rounded-lg shadow-md max-w-3xl mx-auto mt-6">
-
-
             <div class="flex items-center space-x-3 mb-4 md:mb-0">
                 <img src="../../assets/images/logo.jpeg" alt="DentalCare Logo" class="w-12 h-12 rounded-full object-cover border-2 border-sky-400" />
                 <span class="text-sky-600 font-bold text-lg select-none">DentalCare</span>
@@ -15,16 +13,19 @@
             <div class="flex flex-col md:flex-row items-center md:space-x-4 space-y-2 md:space-y-0">
                 <div class="flex space-x-2 md:space-x-4">
                     <a href="#" class="btn btn-sm btn-ghost bg-sky-200 text-sky-600 normal-case">Home</a>
-                    <a href="#" class="btn btn-sm btn-ghost normal-case text-gray-600 hover:bg-gray-100">Appointments</a>
-
                 </div>
 
-                <button class="btn btn-sm btn-primary normal-case flex items-center space-x-2 mt-2 md:mt-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2v-7H3v7a2 2 0 002 2z" />
+                <button
+                    class="btn btn-sm btn-primary normal-case flex items-center space-x-2 mt-2 md:mt-0"
+                    onclick="document.getElementById('my_modal_2').showModal()">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                        stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2v-7H3v7a2 2 0 002 2z" />
                     </svg>
                     <span>Book Appointment</span>
                 </button>
+
                 <div class="dropdown dropdown-end">
                     <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
                         <div class="w-10 rounded-full">
@@ -45,9 +46,43 @@
                         <li><a>Settings</a></li>
                         <li><a>Logout</a></li>
                     </ul>
-
                 </div>
             </div>
+
+
+            <dialog id="my_modal_2" class="modal">
+                <div class="modal-box">
+                    <h3 class="font-bold text-xl mb-3">Book Appointment</h3>
+
+                    <form id="appointment" class="space-y-3">
+                        <input type="date" id="date" name="date" class="input input-bordered w-full" />
+                        <input type="time" id="time" name="time" class="input input-bordered w-full" />
+
+                        <select name="app_type" class="styled-select">
+                            <option disabled selected>Select Service</option>
+                            <option value="general_checkup">General Checkup</option>
+                            <option value="teeth_cleaning">Teeth Cleaning</option>
+                            <option value="root_canal">Root Canal</option>
+                            <option value="braces">Braces Installment / Adjustment</option>
+                        </select>
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary w-full"
+                            name="appointment"
+                            data-user-id="<?php echo htmlspecialchars($_SESSION['id']) ?>">
+                            Submit
+                        </button>
+                    </form>
+
+
+                    <div class="modal-action">
+                        <button class="btn" onclick="my_modal_2.close()">Close</button>
+                    </div>
+                </div>
+            </dialog>
+
+
 
         </div>
         <div class="text-center mt-10">
@@ -59,27 +94,11 @@
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-10">
         <div class="stat bg-base-100 shadow rounded-box">
             <div class="stat-value text-3xl text-sky-600">0</div>
-            <div class="stat-title">Total Patients</div>
-        </div>
-
-        <div class="stat bg-base-100 shadow rounded-box">
-            <div class="stat-value text-3xl text-sky-600">0</div>
             <div class="stat-title">Scheduled</div>
-        </div>
-
-        <div class="stat bg-base-100 shadow rounded-box">
-            <div class="stat-value text-3xl text-sky-600">0</div>
-            <div class="stat-title">Completed</div>
-        </div>
-
-        <div class="stat bg-base-100 shadow rounded-box">
-            <div class="stat-value text-3xl text-sky-600">0</div>
-            <div class="stat-title">Cancelled</div>
         </div>
     </div>
     </div>
 </section>
-
 
 <section class="py-10 bg-[#E6F5FF]">
     <div class="max-w-6xl mx-auto px-4">
@@ -140,51 +159,4 @@
     </div>
 </section>
 
-<dialog id="my_modal_1" class="modal">
-    <div class="modal-box">
-
-
-        <div id="signin_section">
-            <h3 class="font-bold text-xl mb-3">Sign In</h3>
-
-            <form id="signinForm" class="space-y-3">
-                <input type="text" placeholder="Email" id="login_email" class="input input-bordered w-full" required />
-                <input type="password" placeholder="Password" id="login_password" class="input input-bordered w-full" required />
-
-                <p class="text-sm">
-                    Don't have an account?
-                    <span class="text-sky-600 cursor-pointer" onclick="swapForm('signup')">Create one</span>
-                </p>
-
-                <div class="modal-action">
-                    <button type="submit" class="btn bg-sky-600 text-white">Sign In</button>
-                    <button type="button" class="btn" onclick="my_modal_1.close()">Close</button>
-                </div>
-            </form>
-        </div>
-
-
-        <div id="signup_section" class="hidden">
-            <h3 class="font-bold text-xl mb-3">Create Account</h3>
-
-            <form id="signupForm" class="space-y-3">
-                <input type="text" placeholder="Email" id="email" class="input input-bordered w-full" required />
-                <input type="password" placeholder="Password" id="password" class="input input-bordered w-full" required />
-
-                <p class="text-sm">
-                    Already have an account?
-                    <span class="text-sky-600 cursor-pointer" onclick="swapForm('signin')">Sign in</span>
-                </p>
-
-                <div class="modal-action">
-                    <button type="submit" class="btn bg-sky-600 text-white">Sign Up</button>
-                    <button type="button" class="btn" onclick="my_modal_1.close()">Close</button>
-                </div>
-            </form>
-        </div>
-
-    </div>
-</dialog>
-
-
-<?php include('../../includes/footer.php'); ?>
+<?php include('footer.php'); ?>
