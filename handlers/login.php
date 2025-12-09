@@ -2,18 +2,20 @@
 include('../Classes/Client.php');
 $clients = new Users();
 
-if (isset($_POST['signup'])) {
+
+if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    
+
     if ($password == '' && $email == '') {
         $response = array(
-            'error' => "Email and Password is empty!",
+            'error' => "Email and Password is empty!"
         );
     } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $response = array(
             'error' => "Email is not valid!",
+
         );
     } else if ($email == '') {
         $response = array(
@@ -27,30 +29,21 @@ if (isset($_POST['signup'])) {
         $response = array(
             'error' => "Password must be at least 8 characters long, include at least one uppercase letter and one number.",
         );
-    } else if ($first == '' && $middle == '' && $last == '') {
-        $response = array(
-            'error' => "First Name, Middle Name, Last Name is Empty!",
-        );
     } else {
 
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        $signin = $clients->login($email, $password);
 
-        $insert = $clients->signup($email, $hashed_password, $first, $middle, $last, $phone);
-        if ($insert === 1) {
+        if ($signin === 1) {
             $response = array(
-                'success' => "Successfully Created an account!",
+                'error' => "Database error!",
             );
-        } else if ($insert === 2) {
+        } else if ($signin === 2) {
             $response = array(
-                'error' => "Email already exist",
-            );
-        } else if ($insert === 3) {
-            $response = array(
-                'error' => "Sorry, Failed to insert Data",
+                'error' => "user not found",
             );
         } else {
             $response = array(
-                'error' => "Database error",
+                'redirect' => $signin
             );
         }
     }
