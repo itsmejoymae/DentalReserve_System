@@ -12,7 +12,7 @@ let currentYear = today.getFullYear();
 
 // Time slots
 const businessDaySlots = ['09:00 AM','10:00 AM','11:00 AM','01:00 PM','02:00 PM','03:00 PM','04:00 PM'];
-const weekendSlots = ['09:00 AM','10:00 AM','11:00 AM','01:00 PM','02:00 PM','03:00 PM'];
+const weekendSlots = ['09:00 AM','10:00 AM','11:00 AM','01:00 PM','02:00 PM'];
 
 function renderCalendar(month = currentMonth, year = currentYear) {
     const daysInMonth = new Date(year, month + 1, 0).getDate();

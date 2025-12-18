@@ -69,7 +69,7 @@ class Users extends Dbh
     $stmt = $this->connect()->prepare( 
         "INSERT INTO appointment 
         (user_id, doctor_id, room, app_date, app_time, app_type, status, date_created)
-        VALUES (?, NULL, NULL, ?, ?, ?, 'pending', NOW())"
+        VALUES (?, NULL, NULL, ?, ?, ?, 'Pending', NOW())"
     );
 
     if(!$stmt) return 2; 
@@ -90,7 +90,6 @@ class Users extends Dbh
         $row = $result->fetch_assoc();
         return $row['count'];
     }
-
 
 
     public function getProfile($user_id)
@@ -128,5 +127,65 @@ class Users extends Dbh
     }
 
 
-    
+
+    public function displayAppointment($user_id)
+{
+    $sql = "
+        SELECT
+            a.id,
+            COALESCE(p.first_name, 'Unknown') AS first_name,
+            COALESCE(p.middle_name, '') AS middle_name,
+            COALESCE(p.last_name, 'Patient') AS last_name,
+            COALESCE(p.address, '—') AS address,
+            COALESCE(p.contact, '—') AS contact,
+            COALESCE(p.img, '-') AS img,
+
+            COALESCE(
+                CONCAT(d.first_name, ' ', d.last_name),
+                'Not Assigned'
+            ) AS doctor_name,
+
+            COALESCE(a.room, 'Not Assigned') AS room,
+            a.status,
+            a.app_type,
+            a.app_date,
+            a.app_time,
+            a.date_created
+
+        FROM appointment a
+        LEFT JOIN patients p ON a.user_id = p.user_id
+        LEFT JOIN doctor d ON a.doctor_id = d.id
+        WHERE a.user_id = ?
+        ORDER BY a.date_created DESC
+    ";
+
+    $stmt = $this->connect()->prepare($sql);
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+
+    return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+}
+
+
+    public function updateAppointment($app_id, $date, $time)
+{
+    $sql = "
+        UPDATE appointment
+        SET app_date = ?, app_time = ?, status = 'Pending'
+        WHERE id = ?
+    ";
+
+    $stmt = $this->connect()->prepare($sql);
+    $stmt->bind_param("ssi", $date, $time, $app_id);
+    return $stmt->execute();
+}
+
+public function deleteAppointment($app_id)
+{
+    $sql = "DELETE FROM appointment WHERE id = ?";
+    $stmt = $this->connect()->prepare($sql);
+    $stmt->bind_param("i", $app_id);
+    return $stmt->execute();
+}
+
 }
