@@ -11,4 +11,17 @@
     <script type="module" src="https://unpkg.com/cally"></script>
 </head>
 
+<style>
+  
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #bae6fd;
+        border-radius: 10px;
+    }
+</style>
 <body class="bg-sky-100 text-gray-800">

@@ -2,19 +2,17 @@
 <script>
 $(document).ready(function() {
 
-  // ----------------------------
   // Calendar Setup
-  // ----------------------------
-const today = new Date();
-let selectedDate = null;
-let currentMonth = today.getMonth();
-let currentYear = today.getFullYear();
+  const today = new Date();
+  let selectedDate = null;
+  let currentMonth = today.getMonth();
+  let currentYear = today.getFullYear();
 
-// Time slots
-const businessDaySlots = ['09:00 AM','10:00 AM','11:00 AM','01:00 PM','02:00 PM','03:00 PM','04:00 PM'];
-const weekendSlots = ['09:00 AM','10:00 AM','11:00 AM','01:00 PM','02:00 PM'];
+  // Time slots
+  const businessDaySlots = ['09:00 AM','10:00 AM','11:00 AM','01:00 PM','02:00 PM','03:00 PM','04:00 PM'];
+  const weekendSlots = ['09:00 AM','10:00 AM','11:00 AM','01:00 PM','02:00 PM'];
 
-function renderCalendar(month = currentMonth, year = currentYear) {
+  function renderCalendar(month = currentMonth, year = currentYear) {
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     const firstDay = new Date(year, month, 1).getDay(); // 0=Sun
 
@@ -40,10 +38,10 @@ function renderCalendar(month = currentMonth, year = currentYear) {
     }
 
     $('#calendar_container').html(calendarHtml);
-}
+  }
 
-// Time slots
-function renderTimeSlots(dateStr){
+  // Time slots
+  function renderTimeSlots(dateStr){
     const dateObj = new Date(dateStr);
     const day = dateObj.getDay();
     const slots = (day === 6 || day === 5) ? weekendSlots : businessDaySlots;
@@ -52,41 +50,37 @@ function renderTimeSlots(dateStr){
     slots.forEach(time => html += `<button type="button" class="time-slot btn btn-outline btn-sm w-full mb-1" data-time="${time}">${time}</button>`);
     $('#time_slots').html(html);
     $('#selected_time').val('');
-}
+  }
 
-// Initialize
-renderCalendar();
+  // Initialize
+  renderCalendar();
 
-// -----------------
-// Navigation
-// -----------------
-$('#prevMonth').on('click', function(e){
+  // Navigation
+  $('#prevMonth').on('click', function(e){
     e.preventDefault();
     currentMonth--;
     if(currentMonth < 0){ currentMonth = 11; currentYear--; }
     renderCalendar(currentMonth, currentYear);
-});
+  });
 
-$('#nextMonth').on('click', function(e){
+  $('#nextMonth').on('click', function(e){
     e.preventDefault();
     currentMonth++;
     if(currentMonth > 11){ currentMonth = 0; currentYear++; }
     renderCalendar(currentMonth, currentYear);
-});
+  });
 
-$('#today-btn').on('click', function(e){
+  $('#today-btn').on('click', function(e){
     e.preventDefault();
     const todayMonth = today.getMonth();
     const todayYear = today.getFullYear();
     currentMonth = todayMonth;
     currentYear = todayYear;
     renderCalendar(todayMonth, todayYear);
-});
+  });
 
-// -----------------
-// Calendar click
-// -----------------
-$('#calendar_container').on('click', '[data-date]', function () {
+  // Calendar click
+  $('#calendar_container').on('click', '[data-date]', function () {
     if ($(this).hasClass('opacity-40')) return;
 
     $('#calendar_container [data-date]').removeClass('bg-sky-500 text-white');
@@ -95,21 +89,19 @@ $('#calendar_container').on('click', '[data-date]', function () {
     selectedDate = $(this).data('date');
     $('#selected_date').val(selectedDate);
     renderTimeSlots(selectedDate);
-});
+  });
 
-// -----------------
-// Time slot click
-// -----------------
-$('#time_slots').on('click', '.time-slot', function () {
+
+  // Time slot click
+  $('#time_slots').on('click', '.time-slot', function () {
     $('#time_slots .time-slot').removeClass('btn-primary').addClass('btn-outline');
     $(this).removeClass('btn-outline').addClass('btn-primary');
     $('#selected_time').val($(this).data('time'));
-});
+  });
 
-// -----------------
-// Save appointment AJAX (unchanged)
-// -----------------
-$('#save_appointment').on('click', function(e) {
+
+  // Save appointment 
+  $('#save_appointment').on('click', function(e) {
     e.preventDefault();
 
     const date = $('#selected_date').val();
@@ -145,9 +137,7 @@ $('#save_appointment').on('click', function(e) {
 });
 
 
-  // ----------------------------
   // Profile Load & Update
-  // ----------------------------
   function loadProfile() {
     $.ajax({
       url: '../../handlers/c_viewProfile.php',
@@ -220,5 +210,17 @@ $('#save_appointment').on('click', function(e) {
     });
   });
 
+  // Logout Confirmation
+  document.getElementById('logoutLink').addEventListener('click', function(e) {
+    e.preventDefault(); 
+    const proceed = confirm("Are you sure you want to log out?");
+    if (proceed) {
+        
+        window.location.href = "../../handlers/logout.php";
+    } else {
+        
+        alert("You chose to stay logged in.");
+    }
+  });
 });
 </script>

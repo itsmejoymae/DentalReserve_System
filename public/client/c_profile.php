@@ -136,7 +136,7 @@ $profile = $client->getProfile($_SESSION['id']);
 </dialog>
 
 <script>
-    // Quick preview for image upload
+    // Preview for image upload
     function previewImage(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();

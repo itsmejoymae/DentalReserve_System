@@ -39,7 +39,7 @@ include('header.php');
                 <ul tabindex="-1" class="menu menu-sm dropdown-content bg-white rounded-xl z-50 mt-4 w-52 p-2 shadow-xl border border-gray-50">
                     <li class="menu-title text-gray-400 uppercase text-[10px]">Account</li>
                     <li><a href="c_profile.php" class="rounded-lg">Profile Settings</a></li>
-                    <li><a href="../../handlers/logout.php" class="text-red-500 rounded-lg">Logout</a></li>
+                    <li><a href="#" id="logoutLink" class="text-red-500 rounded-lg">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -143,19 +143,5 @@ include('header.php');
         </div>
     </div>
 </dialog>
-
-<style>
-  
-    .custom-scrollbar::-webkit-scrollbar {
-        width: 4px;
-    }
-    .custom-scrollbar::-webkit-scrollbar-track {
-        background: #f1f1f1;
-    }
-    .custom-scrollbar::-webkit-scrollbar-thumb {
-        background: #bae6fd;
-        border-radius: 10px;
-    }
-</style>
 
 <?php include('footer.php'); ?>

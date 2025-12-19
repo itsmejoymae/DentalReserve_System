@@ -1,6 +1,5 @@
 <?php include('../includes/header.php'); ?>
 
-
 <div class="flex justify-center pt-6">
     <nav class="bg-white shadow-lg rounded-2xl px-6 py-3 flex items-center w-[90%] max-w-6xl">
         <div class="flex items-center gap-3 flex-1">
@@ -20,7 +19,6 @@
     </nav>
 </div>
 
-
 <section class="text-center mt-20">
     <h1 class="text-4xl font-bold">
         Your Smile, Our <span class="text-sky-600">Priority</span>
@@ -29,7 +27,6 @@
         Professional dental care facilities and experienced practitioners.
     </p>
 </section>
-
 
 <section class="max-w-6xl mx-auto mt-20 px-6">
     <h2 class="text-2xl font-bold mb-6 text-center">Our Services</h2>
@@ -52,12 +49,10 @@
     </div>
 </section>
 
-
 <section class="max-w-6xl mx-auto mt-20 px-6 pb-20">
     <h2 class="text-2xl font-bold text-center mb-6">Our Doctors</h2>
     <div id="doctors" class="carousel mt-6"></div>
 </section>
-
 
 <dialog id="modal" class="modal">
     <div class="modal-box bg-white p-6 rounded-2xl w-96 shadow-lg">
