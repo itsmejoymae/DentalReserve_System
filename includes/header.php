@@ -9,5 +9,8 @@
     <script src=" https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4">
     </script>
 </head>
-
+<style>
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
 <body class="bg-sky-100 text-gray-800">

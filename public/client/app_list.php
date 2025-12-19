@@ -67,47 +67,69 @@ $profile = $client->getProfile($user_id);
     </div>
 </div>
 
-<dialog id="app_modal" class="modal modal-bottom sm:modal-middle backdrop-blur-sm">
-    <div class="modal-box p-0 max-w-lg rounded-3xl overflow-hidden shadow-2xl">
-        <div class="bg-sky-600 p-8 text-white relative">
-            <h3 class="font-black text-2xl tracking-tight">Reschedule Visit</h3>
-            <p class="text-sky-100 text-sm opacity-90 mt-1">Select a new date and time for your clinic visit.</p>
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-4 top-4 text-white" onclick="app_modal.close()">✕</button>
+<dialog id="app_modal" class="modal modal-bottom sm:modal-middle backdrop-blur-md">
+    <div class="modal-box p-0 max-w-md rounded-[2rem] overflow-hidden shadow-2xl border border-white/20 max-h-[90vh] flex flex-col">
+        
+        <div class="bg-sky-600 px-6 py-4 text-white shrink-0">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h3 class="font-black text-xl tracking-tight">Reschedule</h3>
+                    <p class="text-sky-100 text-[10px] opacity-90">Pick a new date and time</p>
+                </div>
+                <button class="btn btn-xs btn-circle btn-ghost text-white" onclick="app_modal.close()">✕</button>
+            </div>
         </div>
 
-        <form id="appointment" class="p-8 space-y-8">
+        <form id="appointment" class="p-6 overflow-y-auto space-y-6 bg-white custom-scrollbar">
             <input type="hidden" id="selected_date" name="date" />
             <input type="hidden" id="selected_time" name="time" />
 
-            <div>
-                <div class="flex items-center justify-between mb-6">
-                    <h4 class="font-bold text-slate-800 text-lg">1. Choose Date</h4>
-                    <div class="flex gap-2">
-                        <button type="button" id="prevMonth" class="btn btn-xs btn-circle btn-outline border-slate-200 text-slate-400 hover:bg-slate-100">❮</button>
-                        <span id="currentMonth" class="font-bold text-sm text-sky-600 min-w-[100px] text-center uppercase tracking-widest"></span>
-                        <button type="button" id="nextMonth" class="btn btn-xs btn-circle btn-outline border-slate-200 text-slate-400 hover:bg-slate-100">❯</button>
+            <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                    <h4 class="font-bold text-slate-800 text-sm flex items-center gap-2">
+                        <span class="w-5 h-5 rounded-full bg-sky-100 text-sky-600 text-[10px] flex items-center justify-center">1</span>
+                        Select Date
+                    </h4>
+                    <div class="flex items-center gap-1 bg-slate-100 p-1 rounded-lg">
+                        <button type="button" id="prevMonth" class="btn btn-ghost btn-xs px-1 min-h-0 h-6">❮</button>
+                        <span id="currentMonth" class="font-black text-[9px] text-slate-600 min-w-[70px] text-center uppercase"></span>
+                        <button type="button" id="nextMonth" class="btn btn-ghost btn-xs px-1 min-h-0 h-6">❯</button>
                     </div>
                 </div>
-                <div id="calendar_container" class="grid grid-cols-7 gap-2 text-center text-xs font-bold text-slate-400">
+                
+                <div class="bg-slate-50 p-2 rounded-2xl">
+                    <div id="calendar_container" class="grid grid-cols-7 gap-1 text-center text-[9px] font-bold">
+                        </div>
+                </div>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-bold text-slate-800 text-sm flex items-center gap-2">
+                    <span class="w-5 h-5 rounded-full bg-sky-100 text-sky-600 text-[10px] flex items-center justify-center">2</span>
+                    Select Time
+                </h4>
+                <div id="time_slots" class="grid grid-cols-3 gap-2">
                     </div>
             </div>
 
-            <div class="border-t border-slate-100 pt-8">
-                <h4 class="font-bold text-slate-800 text-lg mb-4">2. Available Slots</h4>
-                <div id="time_slots" class="grid grid-cols-3 sm:grid-cols-4 gap-2">
+            <div id="selection_summary" class="hidden">
+                <div class="bg-sky-50 border border-sky-100 rounded-xl p-3 flex items-center justify-between">
+                    <div class="text-[11px]">
+                        <p class="text-sky-400 font-bold uppercase tracking-tighter">Selected Slot</p>
+                        <p class="font-black text-sky-700"><span id="summary_date"></span> @ <span id="summary_time"></span></p>
                     </div>
-            </div>
-
-            <div class="flex gap-3 pt-4">
-                <button type="button" id="save_appointment" class="btn btn-primary flex-grow rounded-2xl h-14 shadow-lg shadow-sky-200 border-none bg-sky-600 hover:bg-sky-700 font-black text-lg">
-                    Confirm Change
-                </button>
+                    <span class="text-lg">🗓️</span>
+                </div>
             </div>
         </form>
+
+        <div class="p-4 bg-white border-t border-slate-50 shrink-0">
+            <button type="button" id="save_appointment" class="btn btn-primary w-full rounded-xl h-12 shadow-lg border-none bg-sky-600 hover:bg-sky-700 font-black text-sm">
+                Confirm Changes
+            </button>
+        </div>
     </div>
-    <form method="dialog" class="modal-backdrop bg-slate-900/40">
-        <button>close</button>
-    </form>
+    <form method="dialog" class="modal-backdrop bg-slate-900/40"><button>close</button></form>
 </dialog>
 
 <script>
@@ -314,18 +336,28 @@ $(function() {
     $('#nextMonth').click(function(e){ e.preventDefault(); currentMonth++; if(currentMonth>11){currentMonth=0; currentYear++;} renderCalendar(currentMonth,currentYear); });
 
     $('#calendar_container').on('click', '[data-date]', function () {
-        if ($(this).hasClass('opacity-20')) return;
-        $('#calendar_container [data-date]').removeClass('bg-sky-600 text-white shadow-lg shadow-sky-100');
-        $(this).addClass('bg-sky-600 text-white shadow-lg shadow-sky-100');
-        selectedDate = $(this).data('date');
-        $('#selected_date').val(selectedDate);
-        renderTimeSlots(selectedDate);
+    if ($(this).hasClass('opacity-20')) return;
+    $('#calendar_container [data-date]').removeClass('bg-sky-600 text-white shadow-lg shadow-sky-100');
+    $(this).addClass('bg-sky-600 text-white shadow-lg shadow-sky-100');
+    selectedDate = $(this).data('date');
+    $('#selected_date').val(selectedDate);
+    
+    
+    $('#summary_date').text(new Date(selectedDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }));
+    $('#selection_summary').removeClass('hidden');
+
+    renderTimeSlots(selectedDate);
     });
 
     $('#time_slots').on('click', '.time-slot', function () {
-        $('#time_slots .time-slot').removeClass('bg-sky-600 text-white border-sky-600 shadow-md').addClass('btn-outline border-slate-100 text-slate-600');
-        $(this).removeClass('btn-outline border-slate-100').addClass('bg-sky-600 text-white border-sky-600 shadow-md');
-        $('#selected_time').val($(this).data('time'));
+    $('#time_slots .time-slot').removeClass('bg-sky-600 text-white border-sky-600 shadow-md').addClass('btn-outline border-slate-100 text-slate-600');
+    $(this).removeClass('btn-outline border-slate-100').addClass('bg-sky-600 text-white border-sky-600 shadow-md');
+    
+    const selectedTime = $(this).data('time');
+    $('#selected_time').val(selectedTime);
+
+    
+    $('#summary_time').text(selectedTime);
     });
 
     loadAppointments();

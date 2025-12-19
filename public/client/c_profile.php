@@ -85,7 +85,7 @@ $profile = $client->getProfile($_SESSION['id']);
                     <img src="../../Uploads/Client/<?php echo htmlspecialchars($profile['img'] ?? 'default.jpg'); ?>" 
                          id="profile_img_preview" class="w-24 h-24 rounded-2xl object-cover ring-4 ring-gray-50" />
                     <label for="profile_img_input" class="absolute inset-0 flex items-center justify-center bg-black/40 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
-                        <span class="text-white text-[10px] font-bold uppercase">Change</span>
+                        <span class="text-white text-[10px] font-bold uppercase">Change</span> 
                     </label>
                 </div>
                 <input type="file" name="profile_img" id="profile_img_input" class="hidden" onchange="previewImage(this)"/>
