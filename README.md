@@ -1,9 +1,10 @@
 "DR. B Dental Clinic Online Appointment"
 
-Members: Ebasan, Jose Ricky
-,Caburnay, Joy Mae
-,Ferrer, Catherine
-,Artezuela, Lem Sander
+Members:
+1. Ebasan, Jose Ricky
+2. Caburnay, Joy Mae
+3. Ferrer, Catherine
+4. Artezuela, Lem Sander
 
 
 
